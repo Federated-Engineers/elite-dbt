@@ -1,0 +1,7 @@
+name: elite_dbt
+version: 1.0.0
+config-version: 2
+
+profile: my-snowflake-db
+
+model-paths: ["models"]
