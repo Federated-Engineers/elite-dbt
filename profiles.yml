@@ -1,4 +1,4 @@
-my-snowflake-db:
+elite-dbt-project:
   target: dev
   outputs:
     dev:
