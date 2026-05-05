@@ -1,35 +1,36 @@
+---
 name: CI pipeline
 
-on:
-pull_request:
-paths:
-- '**.sql'
-- 'dbt_project.yml'
-- 'models/**'
-- 'macros/**'
-- 'packages.yml'
+"on":
+  pull_request:
+    paths:
+      - '**.sql'
+      - 'dbt_project.yml'
+      - 'models/**'
+      - 'macros/**'
+      - 'packages.yml'
 
 jobs:
-dbt-ci:
-runs-on: ubuntu-latest
+  dbt-ci:
+    runs-on: ubuntu-latest
 
-steps:
-  - name: Checkout repo
-    uses: actions/checkout@v5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
 
-  - name: Set up Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: '3.11'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-  - name: Install dependencies
-    run: pip install -r requirements-ci.txt
+      - name: Install dependencies
+        run: pip install -r requirements-ci.txt
 
-  - name: Run SQLFluff lint
-    run: sqlfluff lint emboll/models/
+      - name: Run SQLFluff lint
+        run: sqlfluff lint emboll/models/
 
-  - name: dbt parse (validate project)
-    run: dbt parse --profiles-dir .
+      - name: dbt parse
+        run: dbt parse --profiles-dir emboll --project-dir emboll
 
-  - name: dbt compile (check SQL validity)
-    run: dbt compile --profiles-dir .
+      - name: dbt compile
+        run: dbt compile --profiles-dir emboll --project-dir emboll
