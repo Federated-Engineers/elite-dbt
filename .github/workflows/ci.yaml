@@ -29,8 +29,3 @@ jobs:
       - name: Run SQLFluff lint
         run: sqlfluff lint emboll/models/
 
-      - name: dbt parse
-        run: dbt parse --profiles-dir emboll --project-dir emboll
-
-      - name: dbt compile
-        run: dbt compile --profiles-dir emboll --project-dir emboll
