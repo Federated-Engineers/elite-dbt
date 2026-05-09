@@ -4,11 +4,11 @@ name: CI pipeline
 "on":
   pull_request:
     paths:
-      - '**.sql'
-      - 'dbt_project.yml'
-      - 'models/**'
-      - 'macros/**'
-      - 'packages.yml'
+      - "**.sql"
+      - "elite_dbt_project/models/**"
+      - "macros/**"
+      - "dbt_project.yml"
+      - "packages.yml"
 
 jobs:
   dbt-ci:
@@ -21,11 +21,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12.3'
+          python-version: "3.12.3"
           cache: "pip"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt -r requirements-dev.txt
 
       - name: Run SQLFluff lint
         run: sqlfluff lint elite_dbt_project/models/
