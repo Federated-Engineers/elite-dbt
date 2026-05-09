@@ -3,8 +3,8 @@ dialect = snowflake
 templater = jinja
 
 [sqlfluff:templater:jinja]
-project_dir = ./emboll
-profiles_dir = ./emboll
+project_dir = ./elite_dbt_project
+profiles_dir = ./elite_dbt_project
 undefined_variables = ignore
 
 [sqlfluff:rules:capitalisation.keywords]

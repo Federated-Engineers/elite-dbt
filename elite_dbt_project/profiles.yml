@@ -1,4 +1,4 @@
-elite-dbt-project:
+elite-team-dbt-project:
   target: dev
   outputs:
     dev:
