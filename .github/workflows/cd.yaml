@@ -11,8 +11,8 @@ name: CD pipeline
       - "dbt_project.yml"
 
 jobs:
-  build-deploy:
-    name: checkout
+  build-push-image:
+    name: Build and Push Docker Image
     runs-on: ubuntu-24.04
 
     steps:
