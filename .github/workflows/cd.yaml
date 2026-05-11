@@ -6,13 +6,14 @@ name: CD pipeline
     branches:
       - "main"
     paths:
-      - "**.sql"
-      - "elite_dbt_project/models/**"
-      - "dbt_project.yml"
+      - "elite_dbt_project/**"
+      - "Dockerfile"
+      - "requirements.txt"
+      - "requirements-dev.txt"
 
 jobs:
-  build-push-image:
-    name: Build and Push Docker Image
+  build-deploy:
+    name: checkout
     runs-on: ubuntu-24.04
 
     steps:
@@ -30,19 +31,29 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Set short SHA
+        id: vars
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
       - name: Build, tag, and push Docker image to Amazon ECR
         env:
           REGISTRY: 049417293525.dkr.ecr.eu-central-1.amazonaws.com
           REPOSITORY: elite-dbt
-          IMAGE_TAG: version-${{ github.sha }}
+          IMAGE_TAG: version-${{ env.SHORT_SHA }}
 
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-
-          docker tag \
-            $REGISTRY/$REPOSITORY:$IMAGE_TAG \
-            $REGISTRY/$REPOSITORY:latest
-
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
-          docker push $REGISTRY/$REPOSITORY:latest
+      - name: Verify Docker image
+        env:
+          REGISTRY: 049417293525.dkr.ecr.eu-central-1.amazonaws.com
+          REPOSITORY: elite-dbt
+          IMAGE_TAG: version-${{ env.SHORT_SHA }}
+
+        run: |
+          docker pull $REGISTRY/$REPOSITORY:$IMAGE_TAG
+
+          docker run --rm \
+            $REGISTRY/$REPOSITORY:$IMAGE_TAG \
+            dbt --version
