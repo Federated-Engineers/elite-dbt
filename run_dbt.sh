@@ -1,6 +1,8 @@
 #!/bin/sh
 
-echo "Running all dbt commands"
-echo "Run all dependencies to collect the required packages before dbt execution"
+echo "Running dbt run for elite_dbt_project"
 
-dbt --version
+dbt run \
+  --project-dir elite_dbt_project \
+  --profiles-dir elite_dbt_project
+  
