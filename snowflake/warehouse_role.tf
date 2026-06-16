@@ -53,7 +53,7 @@ resource "snowflake_grant_privileges_to_account_role" "scientist_wh" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "analyst_wh" {
-  privileges = ["USAGE"]
+  privileges        = ["USAGE"]
   account_role_name = snowflake_account_role.data_analyst.name
   on_account_object {
     object_type = "WAREHOUSE"

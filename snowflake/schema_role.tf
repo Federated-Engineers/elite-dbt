@@ -1,5 +1,5 @@
 resource "snowflake_grant_ownership" "platform_admin_dev_schema" {
-  account_role_name = snowflake_account_role.platform_admin.name
+  account_role_name   = snowflake_account_role.platform_admin.name
   outbound_privileges = "COPY"
   on {
     object_type = "SCHEMA"
@@ -8,16 +8,16 @@ resource "snowflake_grant_ownership" "platform_admin_dev_schema" {
 }
 
 resource "snowflake_grant_ownership" "platform_admin_prod_schema" {
-  account_role_name = snowflake_account_role.platform_admin.name
+  account_role_name   = snowflake_account_role.platform_admin.name
   outbound_privileges = "COPY"
   on {
     object_type = "SCHEMA"
     object_name = "\"${snowflake_database.elite_dbt_db.name}\".\"${snowflake_schema.prod.name}\""
-  } 
+  }
 }
 
 resource "snowflake_grant_ownership" "platform_admin_data_science_schema" {
-  account_role_name = snowflake_account_role.platform_admin.name
+  account_role_name   = snowflake_account_role.platform_admin.name
   outbound_privileges = "COPY"
   on {
     object_type = "SCHEMA"
