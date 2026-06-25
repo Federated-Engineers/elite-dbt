@@ -15,9 +15,9 @@ jobs:
       - name: Check Terraform file are formatted correctly
         uses: dflook/terraform-fmt-check@v2
         with:
-          path: ./snowflake/
+          path: ./snowflake/production
 
       - name: terraform validate
         uses: dflook/terraform-validate@v2
         with:
-          path: ./snowflake/
+          path: ./snowflake/production

@@ -10,10 +10,14 @@ resource "snowflake_account_role" "analytics_engineer" {
   name = "ELITE_ANALYTICS_ENGINEER"
 }
 
-resource "snowflake_account_role" "data_scientist" {
-  name = "ELITE_DATA_SCIENTIST"
-}
-
 resource "snowflake_account_role" "data_analyst" {
   name = "ELITE_DATA_ANALYST"
+}
+
+resource "snowflake_account_role" "airflow_role" {
+  name = "AIRFLOW_ROLE"
+}
+
+resource "snowflake_account_role" "dbt_role" {
+  name = "DBT_ROLE"
 }

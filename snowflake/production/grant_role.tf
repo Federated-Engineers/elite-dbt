@@ -13,12 +13,17 @@ resource "snowflake_grant_account_role" "analytics_to_platform_admin" {
   parent_role_name = snowflake_account_role.platform_admin.name
 }
 
-resource "snowflake_grant_account_role" "scientist_to_platform_admin" {
-  role_name        = snowflake_account_role.data_scientist.name
+resource "snowflake_grant_account_role" "analyst_to_platform_admin" {
+  role_name        = snowflake_account_role.data_analyst.name
   parent_role_name = snowflake_account_role.platform_admin.name
 }
 
-resource "snowflake_grant_account_role" "analyst_to_platform_admin" {
-  role_name        = snowflake_account_role.data_analyst.name
+resource "snowflake_grant_account_role" "airflow_to_platform_admin" {
+  role_name        = snowflake_account_role.airflow_role.name
+  parent_role_name = snowflake_account_role.platform_admin.name
+}
+
+resource "snowflake_grant_account_role" "dbt_to_platform_admin" {
+  role_name        = snowflake_account_role.dbt_role.name
   parent_role_name = snowflake_account_role.platform_admin.name
 }
