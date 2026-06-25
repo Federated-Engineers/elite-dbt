@@ -1,29 +1,3 @@
-variable "snowflake_role" {
-  type        = string
-  description = "The role in Snowflake that we will use to deploy"
-}
-
-variable "snowflake_account" {
-  type        = string
-  description = "The name of the Snowflake account that we will be deploying into"
-}
-
-variable "snowflake_org" {
-  type        = string
-  description = "The name of the Snowflake Organization we will be deploying into"
-}
-
-variable "snowflake_user" {
-  type        = string
-  description = "The name of the Snowflake user that we will be utilizing to deploy"
-}
-
-variable "snowflake_password" {
-  type        = string
-  description = "The name of the Snowflake password that we will be utilizing to deploy"
-  sensitive   = true
-}
-
 variable "comment" {
   description = "A comment to apply to all resources"
   type        = string
