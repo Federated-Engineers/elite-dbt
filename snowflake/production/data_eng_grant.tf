@@ -12,7 +12,7 @@ resource "snowflake_grant_privileges_to_account_role" "engineer_wh" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "data_engineer_db_usage" {
-  privileges        = ["USAGE", "MONITOR", "MODIFY","CREATE SCHEMA"]
+  privileges        = ["USAGE", "MONITOR", "MODIFY", "CREATE SCHEMA"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_account_object {
     object_type = "DATABASE"

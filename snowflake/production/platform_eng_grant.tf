@@ -13,7 +13,7 @@ resource "snowflake_grant_privileges_to_account_role" "platform_admin_warehouse"
 }
 
 resource "snowflake_grant_privileges_to_account_role" "platform_admin_database" {
-  privileges = ["USAGE", "MONITOR", "MODIFY", "CREATE SCHEMA", "CREATE DATABASE ROLE"]
+  privileges        = ["USAGE", "MONITOR", "MODIFY", "CREATE SCHEMA", "CREATE DATABASE ROLE"]
   account_role_name = snowflake_account_role.platform_admin.name
   on_account_object {
     object_type = "DATABASE"

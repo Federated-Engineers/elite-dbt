@@ -17,5 +17,5 @@ provider "snowflake" {
   user              = var.snowflake_user
   password          = var.snowflake_password
   role              = var.snowflake_role
-  warehouse         = "ATLANTIS_WH" 
+  warehouse         = "ATLANTIS_WH"
 }
