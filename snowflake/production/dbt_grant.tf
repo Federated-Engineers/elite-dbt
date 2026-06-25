@@ -16,7 +16,6 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_db_usage" {
   }
 }
 
-
 resource "snowflake_grant_privileges_to_account_role" "dbt_role_raw" {
   privileges        = ["USAGE"]
   account_role_name = snowflake_account_role.dbt_role.name

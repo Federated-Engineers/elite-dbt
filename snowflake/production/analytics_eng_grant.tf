@@ -10,7 +10,6 @@ resource "snowflake_grant_privileges_to_account_role" "analytics_wh" {
   }
 }
 
-
 resource "snowflake_grant_privileges_to_account_role" "analytics_db_usage" {
   privileges        = ["USAGE"]
   account_role_name = snowflake_account_role.analytics_engineer.name

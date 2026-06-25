@@ -5,9 +5,7 @@ resource "snowflake_grant_privileges_to_account_role" "platform_admin_warehouse"
     "OPERATE",
     "MODIFY"
   ]
-
   account_role_name = snowflake_account_role.platform_admin.name
-
   on_account_object {
     object_type = "WAREHOUSE"
     object_name = module.elite_platform_admin_wh.name
@@ -49,4 +47,3 @@ resource "snowflake_grant_ownership" "platform_admin_prod_schema" {
     object_name = "\"${snowflake_database.elite_dbt_db.name}\".\"${snowflake_schema.prod.name}\""
   }
 }
-
