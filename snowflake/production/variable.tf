@@ -4,11 +4,6 @@ variable "comment" {
   default     = "Created by terraform"
 }
 
-variable "snowflake_warehouse_name" {
-  type        = string
-  description = "Name of the Snowflake warehouse used for dbt workloads."
-}
-
 variable "snowflake_warehouse_size" {
   type        = string
   description = "Size of the Snowflake warehouse."
