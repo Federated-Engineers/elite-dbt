@@ -5,5 +5,5 @@ output "name" {
 
 output "warehouse_size" {
   description = "Warehouse size"
-  value       = snowflake_warehouse.angel-city-warehouse.id
+  value       = snowflake_warehouse.angel-city-warehouse.warehouse_size
 }
