@@ -7,7 +7,7 @@ resource "snowflake_grant_privileges_to_account_role" "engineer_wh" {
   account_role_name = snowflake_account_role.data_engineer.name
   on_account_object {
     object_type = "WAREHOUSE"
-    object_name = module.elite_data_engineer_wh.name
+    object_name = module.data_engineer_wh.name
   }
 }
 
@@ -16,7 +16,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_db_usage" {
   account_role_name = snowflake_account_role.data_engineer.name
   on_account_object {
     object_type = "DATABASE"
-    object_name = snowflake_database.elite_dbt_db.name
+    object_name = snowflake_database.angel_city_dbt_db.name
   }
 }
 

@@ -1,7 +1,7 @@
-module "elite_platform_admin_wh" {
+module "platform_admin_wh" {
   source = "../modules/warehouse_compute"
 
-  snowflake_warehouse_name                = "ELITE_PLATFORM_ADMIN_WH"
+  snowflake_warehouse_name                = "PLATFORM_ADMIN_WH"
   snowflake_warehouse_size                = var.snowflake_warehouse_size
   snowflake_warehouse_auto_suspend        = var.snowflake_warehouse_auto_suspend
   snowflake_warehouse_auto_resume         = var.snowflake_warehouse_auto_resume
@@ -9,10 +9,10 @@ module "elite_platform_admin_wh" {
   snowflake_warehouse_comment             = var.snowflake_warehouse_comment
 }
 
-module "elite_data_engineer_wh" {
+module "data_engineer_wh" {
   source = "../modules/warehouse_compute"
 
-  snowflake_warehouse_name                = "ELITE_DATA_ENGINEER_WH"
+  snowflake_warehouse_name                = "DATA_ENGINEER_WH"
   snowflake_warehouse_size                = var.snowflake_warehouse_size
   snowflake_warehouse_auto_suspend        = var.snowflake_warehouse_auto_suspend
   snowflake_warehouse_auto_resume         = var.snowflake_warehouse_auto_resume
@@ -20,10 +20,10 @@ module "elite_data_engineer_wh" {
   snowflake_warehouse_comment             = var.snowflake_warehouse_comment
 }
 
-module "elite_analytics_engineer_wh" {
+module "analytics_engineer_wh" {
   source = "../modules/warehouse_compute"
 
-  snowflake_warehouse_name                = "ELITE_ANALYTICS_ENGINEER_WH"
+  snowflake_warehouse_name                = "ANALYTICS_ENGINEER_WH"
   snowflake_warehouse_size                = var.snowflake_warehouse_size
   snowflake_warehouse_auto_suspend        = var.snowflake_warehouse_auto_suspend
   snowflake_warehouse_auto_resume         = var.snowflake_warehouse_auto_resume
@@ -31,10 +31,10 @@ module "elite_analytics_engineer_wh" {
   snowflake_warehouse_comment             = var.snowflake_warehouse_comment
 }
 
-module "elite_data_analyst_wh" {
+module "data_analyst_wh" {
   source = "../modules/warehouse_compute"
 
-  snowflake_warehouse_name                = "ELITE_DATA_ANALYST_WH"
+  snowflake_warehouse_name                = "DATA_ANALYST_WH"
   snowflake_warehouse_size                = var.snowflake_warehouse_size
   snowflake_warehouse_auto_suspend        = var.snowflake_warehouse_auto_suspend
   snowflake_warehouse_auto_resume         = var.snowflake_warehouse_auto_resume

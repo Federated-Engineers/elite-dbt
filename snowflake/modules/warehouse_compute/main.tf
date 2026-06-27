@@ -1,4 +1,4 @@
-resource "snowflake_warehouse" "elite-dbt-warehouse" {
+resource "snowflake_warehouse" "angel-city-warehouse" {
   name                = var.snowflake_warehouse_name
   warehouse_size      = var.snowflake_warehouse_size
   auto_suspend        = var.snowflake_warehouse_auto_suspend

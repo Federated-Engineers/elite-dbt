@@ -12,7 +12,7 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_db_usage" {
   account_role_name = snowflake_account_role.dbt_role.name
   on_account_object {
     object_type = "DATABASE"
-    object_name = snowflake_database.elite_dbt_db.name
+    object_name = snowflake_database.angel_city_dbt_db.name
   }
 }
 
