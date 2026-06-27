@@ -1,6 +1,6 @@
 output "name" {
-  description = "Warehouse name"
-  value       = snowflake_warehouse.angel-city-warehouse
+  description = "The name of the Snowflake warehouse."
+  value       = snowflake_warehouse.angel-city-warehouse.name
 }
 
 output "warehouse_size" {
