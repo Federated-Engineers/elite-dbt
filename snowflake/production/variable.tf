@@ -35,16 +35,16 @@ variable "snowflake_warehouse_comment" {
 }
 
 variable "disabled" {
-  type    = bool
+  type    = string
   default = false
 }
 
 variable "must_change_password" {
-  type    = bool
+  type    = string
   default = true
 }
 
 variable "disable_mfa" {
-  type    = bool
+  type    = string
   default = false
 }

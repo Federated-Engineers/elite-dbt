@@ -5,7 +5,7 @@ module "platform_admin_user" {
   login_name   = "PLATFORM_ADMIN"
   first_name   = "Elite"
   last_name    = "Platform"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "Platform administration user"
   display_name = "Elite Platform Admin"
   disabled     = var.disabled
@@ -24,7 +24,7 @@ module "data_engineer_user" {
   login_name   = "DATA_ENGINEER"
   first_name   = "Elite"
   last_name    = "DataEngineer"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "Data engineering user"
   display_name = "Elite Data Engineer"
   disabled     = var.disabled
@@ -43,7 +43,7 @@ module "analytics_engineer_user" {
   login_name   = "ANALYTICS_ENGINEER"
   first_name   = "Elite"
   last_name    = "AnalyticsEngineer"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "Analytics engineering user"
   display_name = "Elite Analytics Engineer"
   disabled     = var.disabled
@@ -62,7 +62,7 @@ module "data_analyst_user" {
   login_name   = "DATA_ANALYST"
   first_name   = "Elite"
   last_name    = "DataAnalyst"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "Data analyst user"
   display_name = "Elite Data Analyst"
   disabled     = var.disabled
@@ -81,7 +81,7 @@ module "airflow_user" {
   login_name   = "AIRFLOW_USER"
   first_name   = "Airflow"
   last_name    = "Service"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "Airflow service account"
   display_name = "Airflow User"
   disabled     = var.disabled
@@ -100,7 +100,7 @@ module "dbt_user" {
   login_name   = "DBT_USER"
   first_name   = "dbt"
   last_name    = "Service"
-  password     = data.aws_ssm_parameter.elite_dbt_snowflake_password.value
+  password     = data.aws_ssm_parameter.snowflake_password.value
   comment      = "dbt ECS service account"
   display_name = "dbt User"
   disabled     = var.disabled
