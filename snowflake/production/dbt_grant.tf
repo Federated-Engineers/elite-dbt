@@ -29,7 +29,7 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_role_dev" {
   on_schema {
     schema_name = snowflake_schema.dev.fully_qualified_name
   }
-  all_privileges    = true
+  all_privileges = true
 
 }
 
@@ -38,7 +38,7 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_role_silver" {
   on_schema {
     schema_name = snowflake_schema.silver.fully_qualified_name
   }
-  all_privileges    = true
+  all_privileges = true
 
 }
 
