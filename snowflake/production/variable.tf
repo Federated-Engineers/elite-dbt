@@ -17,7 +17,7 @@ variable "snowflake_warehouse_auto_suspend" {
 }
 
 variable "snowflake_warehouse_auto_resume" {
-  type        = bool
+  type        = string
   description = "Whether the warehouse automatically resumes when a query is submitted."
   default     = true
 }
@@ -40,11 +40,13 @@ variable "disabled" {
 }
 
 variable "must_change_password" {
-  type    = string
-  default = true
+  type        = string
+  description = "Whether the user must change their password upon first login."
+  default     = false
 }
 
 variable "disable_mfa" {
-  type    = string
-  default = false
+  type        = string
+  description = "Whether multi-factor authentication (MFA) is disabled for the user."
+  default     = true
 }

@@ -39,8 +39,7 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_role_prod" {
   on_schema {
     schema_name = snowflake_schema.prod.fully_qualified_name
   }
-  all_privileges    = true
-  with_grant_option = true
+  all_privileges = true
 }
 
 resource "snowflake_grant_privileges_to_account_role" "raw_tables" {
@@ -55,7 +54,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_tables" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "dev_tables" {
-  privileges        = ["SELECT", "INSERT"]
+  privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
     all {
@@ -65,11 +64,66 @@ resource "snowflake_grant_privileges_to_account_role" "dev_tables" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "prod_tables" {
-  privileges        = ["SELECT", "INSERT"]
+resource "snowflake_grant_privileges_to_account_role" "silver_tables" {
+  privileges        = ["SELECT", "INSERT", "UPDATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
     all {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.silver.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "prod_tables" {
+  privileges        = ["SELECT", "INSERT", "UPDATE"]
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema_object {
+    all {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.prod.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "raw_tables_future_tables" {
+  privileges        = ["SELECT"]
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.raw.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "dev_tables_future_tables" {
+  privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.dev.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "silver_tables_future_tables" {
+  privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.silver.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "prod_tables_future_tables" {
+  privileges        = ["SELECT", "SELECT", "INSERT", "UPDATE"]
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema_object {
+    future {
       object_type_plural = "TABLES"
       in_schema          = snowflake_schema.prod.fully_qualified_name
     }
@@ -87,11 +141,35 @@ resource "snowflake_grant_privileges_to_account_role" "dev_views" {
   }
 }
 
+resource "snowflake_grant_privileges_to_account_role" "dev_future_views" {
+  privileges        = ["SELECT"]
+  account_role_name = snowflake_account_role.dbt_role.name
+
+  on_schema_object {
+    future {
+      object_type_plural = "VIEWS"
+      in_schema          = snowflake_schema.dev.fully_qualified_name
+    }
+  }
+}
+
 resource "snowflake_grant_privileges_to_account_role" "prod_views" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
     all {
+      object_type_plural = "VIEWS"
+      in_schema          = snowflake_schema.prod.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "prod_future_views" {
+  privileges        = ["SELECT"]
+  account_role_name = snowflake_account_role.dbt_role.name
+
+  on_schema_object {
+    future {
       object_type_plural = "VIEWS"
       in_schema          = snowflake_schema.prod.fully_qualified_name
     }

@@ -26,12 +26,42 @@ resource "snowflake_grant_privileges_to_account_role" "airflow_role_raw" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "airflow_raw_tables" {
-  privileges        = ["INSERT"]
+  privileges        = ["SELECT", "INSERT"]
   account_role_name = snowflake_account_role.airflow_role.name
   on_schema_object {
     all {
       object_type_plural = "TABLES"
       in_schema          = snowflake_schema.raw.fully_qualified_name
     }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "airflow_future_raw_tables" {
+  privileges        = ["SELECT", "INSERT"]
+  account_role_name = snowflake_account_role.airflow_role.name
+
+  on_schema_object {
+    future {
+      object_type_plural = "TABLES"
+      in_schema          = snowflake_schema.raw.fully_qualified_name
+    }
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "airflow_stage" {
+  privileges        = ["USAGE"]
+  account_role_name = snowflake_account_role.airflow_role.name
+  on_schema_object {
+    object_type = "STAGE"
+    object_name = snowflake_stage_external_s3.angel_city_stage.fully_qualified_name
+  }
+}
+
+resource "snowflake_grant_privileges_to_account_role" "airflow_file_format" {
+  privileges        = ["USAGE"]
+  account_role_name = snowflake_account_role.airflow_role.name
+  on_schema_object {
+    object_type = "FILE FORMAT"
+    object_name = snowflake_file_format.json_data.fully_qualified_name
   }
 }
