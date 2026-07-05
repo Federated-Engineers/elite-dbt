@@ -30,7 +30,15 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_role_dev" {
     schema_name = snowflake_schema.dev.fully_qualified_name
   }
   all_privileges    = true
-  with_grant_option = true
+
+}
+
+resource "snowflake_grant_privileges_to_account_role" "dbt_role_silver" {
+  account_role_name = snowflake_account_role.dbt_role.name
+  on_schema {
+    schema_name = snowflake_schema.silver.fully_qualified_name
+  }
+  all_privileges    = true
 
 }
 
@@ -54,7 +62,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_tables" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "dev_tables" {
-  privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
+  privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
     all {
@@ -98,7 +106,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_tables_future_tables"
 }
 
 resource "snowflake_grant_privileges_to_account_role" "dev_tables_future_tables" {
-  privileges        = ["SELECT", "INSERT", "UPDATE", "DELETE", "TRUNCATE"]
+  privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
     future {
