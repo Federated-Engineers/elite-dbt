@@ -39,7 +39,7 @@ variable "password" {
 }
 
 variable "disabled" {
-  type        = bool
+  type        = string
   description = "Whether the Snowflake user account is disabled."
   default     = false
 }
@@ -55,13 +55,13 @@ variable "default_role" {
 }
 
 variable "must_change_password" {
-  type        = bool
+  type        = string
   description = "Whether the user must change their password upon first login."
   default     = false
 }
 
 variable "disable_mfa" {
-  type        = bool
+  type        = string
   description = "Whether multi-factor authentication (MFA) is disabled for the user."
   default     = true
 }

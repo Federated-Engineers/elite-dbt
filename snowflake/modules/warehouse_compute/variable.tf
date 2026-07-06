@@ -16,7 +16,7 @@ variable "snowflake_warehouse_auto_suspend" {
 }
 
 variable "snowflake_warehouse_auto_resume" {
-  type        = bool
+  type        = string
   description = "Whether the warehouse automatically resumes when a query is submitted."
   default     = true
 }
