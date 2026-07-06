@@ -47,7 +47,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod" {
   with_grant_option = true
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_engineer_raw_tables" {
+resource "snowflake_grant_privileges_to_account_role" "data_engineer_raw_table" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_schema_object {
@@ -58,7 +58,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_raw_tables"
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_tables" {
+resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_table" {
   privileges        = ["SELECT", "INSERT"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_schema_object {
@@ -69,7 +69,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_tables"
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod_tables" {
+resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod_table" {
   privileges        = ["SELECT", "INSERT"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_schema_object {
@@ -80,7 +80,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod_tables
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_views" {
+resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_schema_object {
@@ -91,7 +91,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_engineer_dev_views" 
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod_views" {
+resource "snowflake_grant_privileges_to_account_role" "data_engineer_prod_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.data_engineer.name
   on_schema_object {

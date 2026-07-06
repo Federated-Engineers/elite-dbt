@@ -50,7 +50,7 @@ resource "snowflake_grant_privileges_to_account_role" "dbt_role_prod" {
   all_privileges = true
 }
 
-resource "snowflake_grant_privileges_to_account_role" "raw_tables" {
+resource "snowflake_grant_privileges_to_account_role" "raw_table" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -61,7 +61,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_tables" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "dev_tables" {
+resource "snowflake_grant_privileges_to_account_role" "dev_table" {
   privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -72,7 +72,7 @@ resource "snowflake_grant_privileges_to_account_role" "dev_tables" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "silver_tables" {
+resource "snowflake_grant_privileges_to_account_role" "silver_table" {
   privileges        = ["SELECT", "INSERT", "UPDATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -83,7 +83,7 @@ resource "snowflake_grant_privileges_to_account_role" "silver_tables" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "prod_tables" {
+resource "snowflake_grant_privileges_to_account_role" "prod_table" {
   privileges        = ["SELECT", "INSERT", "UPDATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -94,7 +94,7 @@ resource "snowflake_grant_privileges_to_account_role" "prod_tables" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "raw_tables_future_tables" {
+resource "snowflake_grant_privileges_to_account_role" "raw_tables_future_table" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -105,7 +105,7 @@ resource "snowflake_grant_privileges_to_account_role" "raw_tables_future_tables"
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "dev_tables_future_tables" {
+resource "snowflake_grant_privileges_to_account_role" "dev_tables_future_table" {
   privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -116,7 +116,7 @@ resource "snowflake_grant_privileges_to_account_role" "dev_tables_future_tables"
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "silver_tables_future_tables" {
+resource "snowflake_grant_privileges_to_account_role" "silver_tables_future_table" {
   privileges        = ["SELECT", "INSERT", "UPDATE", "TRUNCATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -127,7 +127,7 @@ resource "snowflake_grant_privileges_to_account_role" "silver_tables_future_tabl
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "prod_tables_future_tables" {
+resource "snowflake_grant_privileges_to_account_role" "prod_tables_future_table" {
   privileges        = ["SELECT", "SELECT", "INSERT", "UPDATE"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -138,7 +138,7 @@ resource "snowflake_grant_privileges_to_account_role" "prod_tables_future_tables
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "dev_views" {
+resource "snowflake_grant_privileges_to_account_role" "dev_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -149,7 +149,7 @@ resource "snowflake_grant_privileges_to_account_role" "dev_views" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "dev_future_views" {
+resource "snowflake_grant_privileges_to_account_role" "dev_future_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
 
@@ -161,7 +161,7 @@ resource "snowflake_grant_privileges_to_account_role" "dev_future_views" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "prod_views" {
+resource "snowflake_grant_privileges_to_account_role" "prod_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
   on_schema_object {
@@ -172,7 +172,7 @@ resource "snowflake_grant_privileges_to_account_role" "prod_views" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "prod_future_views" {
+resource "snowflake_grant_privileges_to_account_role" "prod_future_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.dbt_role.name
 
