@@ -25,7 +25,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod_tables" {
+resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod_table" {
   privileges        = ["SELECT", "INSERT"]
   account_role_name = snowflake_account_role.data_analyst.name
   on_schema_object {
@@ -36,7 +36,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod_tables"
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_analyst_dev_views" {
+resource "snowflake_grant_privileges_to_account_role" "data_analyst_dev_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.data_analyst.name
   on_schema_object {
@@ -47,7 +47,7 @@ resource "snowflake_grant_privileges_to_account_role" "data_analyst_dev_views" {
   }
 }
 
-resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod_views" {
+resource "snowflake_grant_privileges_to_account_role" "data_analyst_prod_view" {
   privileges        = ["SELECT"]
   account_role_name = snowflake_account_role.data_analyst.name
   on_schema_object {
