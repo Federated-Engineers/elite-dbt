@@ -1,0 +1,40 @@
+---
+version: 2
+models:
+  - name: stg_patients
+    description: Cleaned and standardized patient records extracted from the raw JSON
+      patient dataset.
+    columns:
+      - name: patient_id
+        description: Unique identifier for each patient.
+        tests: 
+          - unique
+          - not_null
+      - name: first_name
+        description: Patient's first name.
+      - name: last_name
+        description: Patient's last name.
+      - name: date_of_birth
+        description: Patient's date of birth.
+      - name: gender_code
+        description: Gender code recorded for the patient.
+      - name: social_security_hash
+        description: Hashed Social Security Number used for secure identification.
+      - name: primary_insurance_id
+        description: Identifier of the patient's primary insurance provider.
+      - name: residential_zip_code
+        description: Residential ZIP code of the patient.
+      - name: phone
+        description: Patient's primary contact phone number.
+      - name: email
+        description: Patient's primary email address.
+      - name: created_at
+        description: Timestamp when the patient record was originally created.
+      - name: source_file_name
+        description: Source S3 file from which the record was loaded.
+      - name: file_row_number
+        description: Row number of the record within the source file.
+      - name: file_last_modified
+        description: Timestamp when the source file was last modified in S3.
+      - name: load_timestamp
+        description: Timestamp when the record was ingested into Snowflake.

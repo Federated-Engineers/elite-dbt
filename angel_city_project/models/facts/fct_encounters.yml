@@ -1,0 +1,27 @@
+---
+version: 2
+models:
+  - name: fct_encounters
+    description: Fact table containing one record per clinical encounter.
+    columns:
+      - name: encounter_id
+        description: Primary key of the encounter.
+        tests: 
+          - unique
+          - not_null
+      - name: patient_id
+        description: Patient identifier.
+      - name: provider_id
+        description: Identifier of the healthcare provider.
+      - name: encounter_start_timestamp
+        description: Timestamp when the encounter began.
+      - name: encounter_end_timestamp
+        description: Timestamp when the encounter ended.
+      - name: admission_source
+        description: Source from which the patient was admitted.
+      - name: encounter_class
+        description: |
+          "Classification of the encounter such as Inpatient,
+          Outpatient or Telehealth."
+      - name: load_timestamp
+        description: Timestamp when the record was ingested into Snowflake.

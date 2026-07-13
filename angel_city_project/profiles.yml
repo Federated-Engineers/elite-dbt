@@ -1,0 +1,37 @@
+angel-city-dbt-project:
+  target: dev
+
+  outputs:
+
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: DBT_USER
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: DBT_ROLE
+      database: ANGEL_CITY_HEALTH_DB
+      warehouse: DBT_WH
+      schema: DEV
+      threads: 4
+
+    silver:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: DBT_USER
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: DBT_ROLE
+      database: ANGEL_CITY_HEALTH_DB
+      warehouse: DBT_WH
+      schema: SILVER
+      threads: 4
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: DBT_USER
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: DBT_ROLE
+      database: ANGEL_CITY_HEALTH_DB
+      warehouse: DBT_WH
+      schema: PROD
+      threads: 4

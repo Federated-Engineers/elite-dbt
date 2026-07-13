@@ -1,0 +1,34 @@
+---
+version: 2
+models:
+  - name: stg_encounters
+    description: Standardized patient encounter records extracted from the raw encounter
+      dataset.
+    columns:
+      - name: encounter_id
+        description: Unique identifier for each patient encounter.
+        tests: 
+          - unique
+          - not_null
+      - name: patient_id
+        description: Identifier of the patient involved in the encounter.
+        tests: [not_null]
+      - name: provider_id
+        description: Identifier of the healthcare provider.
+      - name: encounter_start_timestamp
+        description: Timestamp when the encounter began.
+      - name: encounter_end_timestamp
+        description: Timestamp when the encounter ended.
+      - name: admission_source
+        description: Source from which the patient was admitted.
+      - name: encounter_class
+        description: Classification of the encounter such as Inpatient, Outpatient
+          or Telehealth.
+      - name: source_file_name
+        description: Source S3 file.
+      - name: file_row_number
+        description: Original row number within the source file.
+      - name: file_last_modified
+        description: Last modification timestamp of the source file.
+      - name: load_timestamp
+        description: Timestamp when the record was loaded into Snowflake.

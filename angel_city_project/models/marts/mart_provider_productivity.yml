@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: mart_provider_productivity
+    description: |
+      Business reporting mart that summarizes provider productivity by
+      provider, specialty, provider type, and encounter class. This model
+      supports operational reporting, provider performance analysis, and
+      financial reporting by combining encounter volumes, claim activity,
+      billing, reimbursements, and encounter duration metrics.
+
+    columns:
+      - name: provider_id
+        description: Unique identifier for the healthcare provider.
+        tests:
+          - not_null
+
+      - name: specialty_code
+        description: Medical specialty associated with the provider.
+        tests:
+          - not_null
+
+      - name: provider_type
+        description: Type of healthcare provider (e.g. Physician, Nurse Practitioner, Physician Assistant).
+        tests:
+          - not_null
+
+      - name: encounter_class
+        description: Classification of the encounter (e.g. Inpatient, Outpatient, Emergency, Telehealth).
+        tests:
+          - not_null
+
+      - name: encounter_count
+        description: Total number of unique patient encounters handled by the provider.
+
+      - name: claim_count
+        description: Total number of insurance claims associated with the provider.
+
+      - name: total_billed_amount
+        description: Total amount billed by the provider across all encounters.
+
+      - name: insurance_paid
+        description: Total amount reimbursed by insurance providers.
+
+      - name: patient_responsibility
+        description: Total amount patients are responsible for paying.
+
+      - name: avg_encounter_duration_minutes
+        description: Average duration of patient encounters in minutes.
+
+      - name: last_updated
+        description: Timestamp indicating when the mart was last refreshed.

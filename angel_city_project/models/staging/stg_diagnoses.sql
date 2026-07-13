@@ -1,0 +1,22 @@
+{{ config(materialized='view') }}
+
+SELECT
+
+    DIAGNOSIS_DATA:diagnosis_id::STRING AS DIAGNOSIS_ID
+    , DIAGNOSIS_DATA:encounter_id::STRING AS ENCOUNTER_ID
+    , DIAGNOSIS_DATA:icd_10_code::STRING AS ICD_10_CODE
+    , DIAGNOSIS_DATA:diagnosis_rank::STRING AS DIAGNOSIS_RANK
+    , DIAGNOSIS_DATA:coding_system::STRING AS CODING_SYSTEM
+    , SOURCE_FILE_NAME
+    , FILE_ROW_NUMBER
+    , FILE_LAST_MODIFIED
+    , LOAD_TIMESTAMP
+    , COALESCE(
+        TRY_TO_TIMESTAMP(
+            DIAGNOSIS_DATA:recorded_at_timestamp::STRING
+        )
+        , TRY_TO_TIMESTAMP(
+            DIAGNOSIS_DATA:recordedAt::STRING
+        )
+    ) AS RECORDED_AT_TIMESTAMP
+FROM {{ source('angel_city_db','diagnoses_raw') }}

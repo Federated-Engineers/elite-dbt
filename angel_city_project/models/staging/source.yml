@@ -1,0 +1,17 @@
+version: 2
+sources:
+  - name: angel_city_db
+    description: Raw JSON data loaded nightly from S3 via Airflow
+    database: ANGEL_CITY_HEALTH_DB
+    schema: RAW
+    tables:
+      - name: patients_raw
+        description: Raw patient JSON data
+      - name: providers_raw
+        description: Raw provider JSON data
+      - name: encounters_raw
+        description: Raw encounter JSON data
+      - name: diagnoses_raw
+        description: Raw diagnosis JSON data
+      - name: claims_raw
+        description: Raw claims JSON data

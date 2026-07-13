@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: int_diagnosis_history
+    description: |
+      Intermediate model that enriches diagnosis records with encounter and
+      patient demographic information. This model provides a unified clinical
+      dataset for analyzing diagnosis trends, disease prevalence, and patient
+      populations across encounters.
+
+    columns:
+      - name: diagnosis_id
+        description: Unique identifier for each diagnosis record.
+        tests:
+          - unique
+          - not_null
+
+      - name: encounter_id
+        description: Unique identifier of the encounter associated with the diagnosis.
+
+      - name: patient_id
+        description: Unique identifier of the patient associated with the encounter.
+
+      - name: provider_id
+        description: Unique identifier of the healthcare provider responsible for the encounter.
+
+      - name: gender_code
+        description: Gender of the patient.
+
+      - name: residential_zip_code
+        description: Residential ZIP code of the patient.
+
+      - name: icd_10_code
+        description: ICD-10 diagnosis code assigned during the encounter.
+        tests:
+          - not_null
+
+      - name: diagnosis_rank
+        description: Indicates whether the diagnosis is Primary, Secondary, or another ranking.
+
+      - name: coding_system
+        description: Clinical coding system used to classify the diagnosis.
+
+      - name: recorded_at_timestamp
+        description: Timestamp when the diagnosis was recorded.
+
+      - name: encounter_start_timestamp
+        description: Timestamp when the encounter began.
+
+      - name: encounter_end_timestamp
+        description: Timestamp when the encounter ended.
+
+      - name: encounter_class
+        description: Classification of the encounter (e.g. Inpatient, Outpatient, Telehealth).
+
+      - name: admission_source
+        description: Source through which the patient was admitted for the encounter.

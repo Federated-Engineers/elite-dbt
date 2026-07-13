@@ -1,0 +1,23 @@
+---
+version: 2
+models:
+  - name: fct_diagnoses
+    description: Fact table containing diagnosis records.
+    columns:
+      - name: diagnosis_id
+        description: Diagnosis identifier.
+        tests: 
+          - unique
+          - not_null
+      - name: encounter_id
+        description: Encounter identifier.
+      - name: icd_10_code
+        description: ICD-10 diagnosis code.
+      - name: diagnosis_rank
+        description: Diagnosis sequence.
+      - name: coding_system
+        description: Clinical coding system used for the diagnosis.
+      - name: recorded_at_timestamp
+        description: Timestamp when the diagnosis was recorded.
+      - name: load_timestamp
+        description: Timestamp when the record was loaded into Snowflake.

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: mart_clinical_trends
+    description: |
+      Business reporting mart that identifies the most common ICD-10 diagnosis
+      codes within each residential ZIP code. This mart supports population
+      health analysis and helps identify disease concentration across geographic
+      regions.
+
+    columns:
+      - name: residential_zip_code
+        description: Residential ZIP code of the patient.
+
+      - name: icd_10_code
+        description: ICD-10 diagnosis code.
+
+      - name: diagnosis_count
+        description: Total number of diagnosis records for the ICD-10 code within the ZIP code.
+
+      - name: ranking
+        description: Rank of the diagnosis within the ZIP code based on diagnosis frequency.
+
+      - name: zip_diagnosis
+        description: Concatenated business key combining residential ZIP code and ICD-10 diagnosis code.
