@@ -1,1 +1,0 @@
-{{ test_unique(column_name="encounter_id", model=get_where_subquery(ref('int_unbilled_encounters'))) }}

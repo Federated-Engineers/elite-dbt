@@ -5,3 +5,5 @@ venv/
 logs
 *terraform
 *terraform.lock*
+target/
+dbt_packages/

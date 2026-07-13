@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="diagnosis_id", model=get_where_subquery(ref('stg_diagnoses'))) }}

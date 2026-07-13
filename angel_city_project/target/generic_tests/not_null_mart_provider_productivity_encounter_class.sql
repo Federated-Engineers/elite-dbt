@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="encounter_class", model=get_where_subquery(ref('mart_provider_productivity'))) }}

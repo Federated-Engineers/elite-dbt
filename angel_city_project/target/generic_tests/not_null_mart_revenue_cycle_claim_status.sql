@@ -1,1 +1,0 @@
-{{ test_not_null(column_name="claim_status", model=get_where_subquery(ref('mart_revenue_cycle'))) }}
