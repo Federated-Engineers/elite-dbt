@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
     paths:
-      - "elite_dbt_project/**"
+      - "angel_city_project/**"
       - "requirements.txt"
 
 env:
