@@ -6,7 +6,7 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY elite_dbt_project/ ./elite_dbt_project/
+COPY angel_city_project/ ./angel_city_project/
 
 COPY run_dbt.sh .
 
