@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: int_claims_activity
+    description: |
+      Intermediate business model that enriches healthcare claims with
+      encounter, patient, and provider information. This model serves as the
+      primary financial dataset for downstream reporting, including provider
+      productivity, revenue cycle, patient demographics, and payer performance
+      analytics.
+
+    columns:
+      - name: claim_id
+        description: Unique identifier for each insurance claim.
+        tests:
+          - unique
+          - not_null
+
+      - name: encounter_id
+        description: Unique identifier of the healthcare encounter associated with the claim.
+
+      - name: payer_id
+        description: Identifier of the insurance payer responsible for the claim.
+
+      - name: claim_status
+        description: Current processing status of the insurance claim.
+
+      - name: denial_reason
+        description: Reason the claim was denied, if applicable.
+
+      - name: reimbursement_rate
+        description: Percentage of the billed amount reimbursed by the insurance payer.
+
+      - name: processed_date
+        description: Date the insurance claim was processed.
+
+      - name: total_billed_amount
+        description: Total amount billed to the insurance payer.
+
+      - name: amount_paid_by_insurance
+        description: Amount reimbursed by the insurance payer.
+
+      - name: patient_responsibility_amount
+        description: Amount the patient is financially responsible for paying.
+
+      - name: patient_id
+        description: Unique identifier of the patient associated with the encounter.
+
+      - name: provider_id
+        description: Unique identifier of the healthcare provider responsible for the encounter.
+
+      - name: encounter_start_timestamp
+        description: Timestamp when the patient encounter began.
+
+      - name: encounter_end_timestamp
+        description: Timestamp when the patient encounter ended.
+
+      - name: encounter_class
+        description: Classification of the encounter (e.g. Inpatient, Outpatient, Emergency, Telehealth).
+
+      - name: admission_source
+        description: Source through which the patient was admitted for the encounter.
+
+      - name: encounter_duration_minutes
+        description: Total duration of the encounter in minutes.
+
+      - name: patient_first_name
+        description: Patient's first name.
+
+      - name: patient_last_name
+        description: Patient's last name.
+
+      - name: gender_code
+        description: Gender of the patient.
+
+      - name: date_of_birth
+        description: Patient's date of birth.
+
+      - name: patient_age
+        description: Patient's age in years calculated from the date of birth.
+
+      - name: residential_zip_code
+        description: Residential ZIP code of the patient.
+
+      - name: primary_insurance_id
+        description: Identifier of the patient's primary insurance policy.
+
+      - name: provider_type
+        description: Type of healthcare provider (e.g. Physician, Nurse Practitioner, Physician Assistant).
+
+      - name: specialty_code
+        description: Medical specialty associated with the healthcare provider.
+
+      - name: facility_id
+        description: Identifier of the healthcare facility where the provider practices.
+
+      - name: is_active
+        description: Indicates whether the provider is currently active within the healthcare network.
+
+      - name: load_timestamp
+        description: Timestamp indicating when the intermediate model was generated.

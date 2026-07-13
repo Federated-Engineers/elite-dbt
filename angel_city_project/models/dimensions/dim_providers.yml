@@ -1,0 +1,26 @@
+---
+version: 2
+models:
+  - name: dim_providers
+    description: Dimension containing one record per healthcare provider.
+    columns:
+      - name: provider_id
+        description: Unique provider identifier.
+        tests: 
+          - unique
+          - not_null
+
+      - name: npi_number
+        description: National Provider Identifier (NPI).
+      - name: specialty_code
+        description: Provider specialty.
+      - name: provider_type
+        description: Provider classification.
+      - name: facility_id
+        description: Assigned healthcare facility.
+      - name: hire_date
+        description: Employment start date.
+      - name: is_active
+        description: Whether the provider is active.
+      - name: load_timestamp
+        description: Timestamp when the record was ingested into Snowflake.

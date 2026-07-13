@@ -1,0 +1,1 @@
+{{ test_unique(column_name="specialty_code", model=get_where_subquery(ref('mart_provider_productivity'))) }}

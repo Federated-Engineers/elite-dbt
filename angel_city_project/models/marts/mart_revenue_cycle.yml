@@ -1,0 +1,26 @@
+---
+version: 2
+models:
+  - name: mart_revenue_cycle
+    description: |
+      Revenue cycle reporting mart used to monitor billing efficiency,
+      payment turnaround times, reimbursement performance, and claim status.
+    columns:
+      - name: claim_status
+        description: Current claim processing status.
+        tests: 
+          - unique
+          - not_null
+      - name: total_claims
+        description: Number of claims.
+      - name: total_billed_amount
+        description: Total amount billed.
+      - name: total_paid_amount
+        description: Total amount paid by insurance.
+      - name: patient_responsibility_amount
+        description: Amount remaining for patient payment.
+      - name: average_days_to_payment
+        description: Average number of days between encounter completion and claim
+          payment.
+      - name: reimbursement_ratio
+        description: Insurance reimbursement divided by billed amount.

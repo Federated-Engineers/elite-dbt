@@ -1,0 +1,41 @@
+CREATE OR REPLACE TRANSIENT TABLE ANGEL_CITY_HEALTH_DB.DEV.MART_CLINICAL_TRENDS
+
+AS (
+
+    WITH DIAGNOSES AS (
+        SELECT
+            RESIDENTIAL_ZIP_CODE
+            , ICD_10_CODE
+            , COUNT(*) AS DIAGNOSIS_COUNT
+        FROM ANGEL_CITY_HEALTH_DB.DEV.INT_DIAGNOSIS_HISTORY
+        GROUP BY
+            RESIDENTIAL_ZIP_CODE
+            , ICD_10_CODE
+
+    )
+
+    , RANKED AS (
+        SELECT
+            RESIDENTIAL_ZIP_CODE
+            , ICD_10_CODE
+            , DIAGNOSIS_COUNT
+            , DENSE_RANK() OVER (
+                PARTITION BY RESIDENTIAL_ZIP_CODE
+                ORDER BY DIAGNOSIS_COUNT DESC
+            ) AS RANKING
+        FROM DIAGNOSES
+    )
+
+    SELECT
+        RESIDENTIAL_ZIP_CODE
+        , ICD_10_CODE
+        , DIAGNOSIS_COUNT
+        , RANKING
+        , CONCAT(
+            RESIDENTIAL_ZIP_CODE
+            , '-'
+            , ICD_10_CODE
+        ) AS ZIP_DIAGNOSIS
+    FROM RANKED
+    WHERE RANKING <= 5
+);

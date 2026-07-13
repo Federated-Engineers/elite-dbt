@@ -1,0 +1,29 @@
+---
+version: 2
+models:
+  - name: stg_diagnoses
+    description: Standardized diagnosis records extracted from the raw diagnosis dataset.
+    columns:
+      - name: diagnosis_id
+        description: Unique identifier for each diagnosis.
+        tests: 
+          - unique
+          - not_null
+      - name: encounter_id
+        description: Encounter associated with the diagnosis.
+      - name: icd_10_code
+        description: ICD-10 diagnosis code.
+      - name: diagnosis_rank
+        description: Indicates whether the diagnosis is Primary or Secondary.
+      - name: coding_system
+        description: Clinical coding system used for the diagnosis.
+      - name: recorded_at_timestamp
+        description: Timestamp when the diagnosis was recorded.
+      - name: source_file_name
+        description: Source S3 file.
+      - name: file_row_number
+        description: Original row number within the source file.
+      - name: file_last_modified
+        description: Last modification timestamp of the source file.
+      - name: load_timestamp
+        description: Timestamp when the record was loaded into Snowflake.

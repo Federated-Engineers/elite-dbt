@@ -1,0 +1,1 @@
+{{ test_unique(column_name="age_group", model=get_where_subquery(ref('mart_patient_demographics'))) }}

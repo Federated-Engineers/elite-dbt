@@ -1,0 +1,28 @@
+version: 2
+models:
+  - name: mart_payer_performance
+    description: |
+      Financial reporting mart used to evaluate insurance payer performance,
+      reimbursement rates, denial rates, and overall payment efficiency.
+    columns:
+      - name: payer_id
+        description: Insurance payer identifier.
+        tests: 
+          - unique
+          - not_null
+      - name: total_claims
+        description: Total number of submitted claims.
+      - name: approved_claims
+        description: Number of approved claims.
+      - name: denied_claims
+        description: Number of denied claims.
+      - name: denial_rate
+        description: Percentage of claims denied.
+      - name: total_billed_amount
+        description: Total billed amount submitted to the payer.
+      - name: total_paid_amount
+        description: Total amount reimbursed by the payer.
+      - name: reimbursement_ratio
+        description: Insurance payment divided by billed amount.
+      - name: average_payment_amount
+        description: Average payment received per claim.

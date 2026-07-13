@@ -1,0 +1,18 @@
+SELECT
+    PROVIDER_DATA:provider_id::STRING AS PROVIDER_ID
+    , PROVIDER_DATA:npi_number::STRING AS NPI_NUMBER
+    , PROVIDER_DATA:provider_type::STRING AS PROVIDER_TYPE
+    , PROVIDER_DATA:specialty_code::STRING AS SPECIALTY_CODE
+    , PROVIDER_DATA:facility_id::STRING AS FACILITY_ID
+    , SOURCE_FILE_NAME
+    , FILE_ROW_NUMBER
+    , FILE_LAST_MODIFIED
+    , LOAD_TIMESTAMP
+    , coalesce(
+        upper(PROVIDER_DATA:is_active::STRING) IN
+        ('TRUE', '1', 'Y'), FALSE
+    ) AS IS_ACTIVE
+    , try_to_date(
+        PROVIDER_DATA:hire_date::STRING
+    ) AS HIRE_DATE
+FROM ANGEL_CITY_HEALTH_DB.RAW.PROVIDERS_RAW

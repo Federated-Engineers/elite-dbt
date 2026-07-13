@@ -1,0 +1,35 @@
+name: angel_city_dbt
+version: "1.0.0"
+config-version: 2
+
+profile: angel-city-dbt-project
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+
+target-path: "target"
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  angel_city_dbt:
+
+    staging:
+      +schema: SILVER
+
+    intermediate:
+      +schema: SILVER
+
+    dimensions:
+      +schema: SILVER
+
+    facts:
+      +schema: SILVER
+
+    marts:
+      +schema: PROD

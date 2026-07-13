@@ -1,0 +1,29 @@
+---
+version: 2
+models:
+  - name: int_unbilled_encounters
+    description: |
+      "Business-ready dataset containing encounters that have no matching insurance claim,
+      used to support operational leakage and revenue leakage reporting."
+    columns:
+      - name: encounter_id
+        description: Unique identifier for the encounter without an associated claim.
+        tests: 
+          - unique
+          - not_null
+      - name: patient_id
+        description: Unique identifier of the patient associated with the encounter.
+      - name: provider_id
+        description: Unique identifier of the provider responsible for the encounter.
+      - name: encounter_start_timestamp
+        description: Timestamp when the encounter began.
+      - name: encounter_end_timestamp
+        description: Timestamp when the encounter ended.
+      - name: encounter_class
+        description: Classification of the encounter, such as Inpatient, Outpatient,
+          Emergency, or Telehealth.
+      - name: admission_source
+        description: Source from which the patient was admitted or referred.
+      - name: load_timestamp
+        description: Timestamp indicating when the encounter record was loaded into
+          the data warehouse.

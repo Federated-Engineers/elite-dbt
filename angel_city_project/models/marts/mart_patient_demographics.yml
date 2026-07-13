@@ -1,0 +1,25 @@
+---
+version: 2
+models:
+  - name: mart_patient_demographics
+    description: |
+      Patient demographic reporting mart used to analyze age groups,
+      gender distribution, insurance coverage, and financial responsibility.
+    columns:
+      - name: age_group
+        description: Patient age category.
+        tests: 
+          - unique
+          - not_null
+      - name: gender_code
+        description: Patient gender.
+      - name: residential_zip_code
+        description: Patient ZIP code.
+      - name: patient_count
+        description: Number of patients.
+      - name: encounter_count
+        description: Total encounters.
+      - name: average_patient_responsibility
+        description: Average patient responsibility amount.
+      - name: total_patient_responsibility
+        description: Total patient responsibility amount.

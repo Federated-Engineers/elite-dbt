@@ -1,0 +1,31 @@
+---
+version: 2
+models:
+  - name: fct_claims
+    description: Fact table containing financial claim records.
+    columns:
+      - name: claim_id
+        description: Primary key of the claim.
+        tests: 
+          - unique
+          - not_null
+      - name: encounter_id
+        description: Associated encounter.
+      - name: payer_id
+        description: Insurance payer.
+      - name: processed_date
+        description: Date on which the claim was processed.
+      - name: claim_status
+        description: Current claim status.
+      - name: total_billed_amount
+        description: Amount billed.
+      - name: amount_paid_by_insurance
+        description: Insurance reimbursement.
+      - name: patient_responsibility_amount
+        description: Patient responsibility.
+      - name: reimbursement_rate
+        description: Percentage of the billed amount reimbursed by the insurance provider.
+      - name: denial_reason
+        description: Reason the claim was denied, if applicable.
+      - name: load_timestamp
+        description: Timestamp when the record was loaded into Snowflake.

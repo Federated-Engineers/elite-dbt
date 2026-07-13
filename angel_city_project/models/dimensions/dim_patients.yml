@@ -1,0 +1,25 @@
+version: 2
+models:
+
+  - name: dim_patients
+    description: Patient dimension containing one row per patient.
+    columns:
+      - name: patient_id
+        description: Unique identifier for each patient.
+        tests: 
+          - unique
+          - not_null
+      - name: patient_first_name
+        description: Patient first name.
+      - name: patient_last_name
+        description: Patient last name.
+      - name: gender_code
+        description: Gender recorded for the patient.
+      - name: date_of_birth
+        description: Patient date of birth.
+      - name: residential_zip_code
+        description: Residential ZIP code.
+      - name: primary_insurance_id
+        description: Primary insurance identifier.
+      - name: load_timestamp
+        description: Timestamp when the record was ingested into Snowflake.

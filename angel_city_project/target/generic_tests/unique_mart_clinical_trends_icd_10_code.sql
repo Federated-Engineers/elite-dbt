@@ -1,0 +1,1 @@
+{{ test_unique(column_name="icd_10_code", model=get_where_subquery(ref('mart_clinical_trends'))) }}

@@ -1,0 +1,32 @@
+---
+version: 2
+models:
+  - name: stg_providers
+    description: Standardized healthcare provider information extracted from the raw
+      provider dataset.
+    columns:
+      - name: provider_id
+        description: Unique identifier for each healthcare provider.
+        tests: 
+          - unique
+          - not_null
+      - name: npi_number
+        description: National Provider Identifier (NPI).
+      - name: provider_type
+        description: Type of healthcare provider.
+      - name: specialty_code
+        description: Medical specialty code.
+      - name: facility_id
+        description: Identifier of the healthcare facility.
+      - name: is_active
+        description: Indicates whether the provider is currently active.
+      - name: hire_date
+        description: Date the provider joined the organization.
+      - name: source_file_name
+        description: Source S3 file.
+      - name: file_row_number
+        description: Original row number within the source file.
+      - name: file_last_modified
+        description: Last modification timestamp of the source file.
+      - name: load_timestamp
+        description: Timestamp when the record was loaded into Snowflake.
